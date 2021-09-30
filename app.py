@@ -12,6 +12,11 @@ with open("jsonFile/item_ids.json", "rb") as f:
     item_ids = json.load(f)
 
 
+@app.route("/")
+def first_page():
+    return "This is for Dota Api"
+
+
 @app.route("/match_info/<match_id>")
 def match_info(match_id):
     r = requests.get(f"https://api.opendota.com/api/matches/{match_id}/")
