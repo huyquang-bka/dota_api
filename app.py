@@ -22,8 +22,9 @@ def match_info(match_id):
     r = requests.get(f"https://api.opendota.com/api/matches/{match_id}/")
     data = json.loads(r.content)
     match_dict = {}
-    hero_info = {}
+    count = 0
     for player in data["players"]:
+        hero_info = {}
         account_id = player["account_id"]
         account_name = json.loads(requests.get(f"https://api.opendota.com/api/players/{account_id}/").content)["profile"]["personaname"]
         hero_info["player_name"] = account_name
@@ -38,9 +39,10 @@ def match_info(match_id):
         hero_info["items"] = []
         for i in range(6):
             hero_info["items"].append(item_ids[str(player[f"item_{i}"])])
-        # match_dict[account_name] = hero_info
+        match_dict[count] = hero_info
+        count += 1
 
-    return jsonify(hero_info)
+    return jsonify(match_dict)
 
 
 if __name__ == "__main__":
