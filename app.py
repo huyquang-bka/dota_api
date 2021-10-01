@@ -30,6 +30,7 @@ def match_info(match_id):
         hero_info[f"playername"] = account_name
         hero_id = player["hero_id"]
         hero_info[f"heroname"] = hero_ids[str(hero_id)] + ".jpg"
+        hero_info["heroani"] =  hero_ids[str(hero_id)] + ".webm"
         hero_info[f"level"] = player["level"]
         hero_info[f"networth"] = player["net_worth"]
         hero_info[f"kills"] = player["kills"]
