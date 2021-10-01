@@ -28,7 +28,7 @@ def match_info(match_id):
         account_id = player["account_id"]
         account_name = json.loads(requests.get(f"https://api.opendota.com/api/players/{account_id}/").content)["profile"]["personaname"]
         hero_info[f"playername{count}"] = account_name
-        hero_id = player["heroid"]
+        hero_id = player["hero_id"]
         hero_info[f"heroname{count}"] = hero_ids[str(hero_id)]
         hero_info[f"level{count}"] = player["level"]
         hero_info[f"networth{count}"] = player["net_worth"]
