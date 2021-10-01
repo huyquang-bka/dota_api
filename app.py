@@ -36,9 +36,9 @@ def match_info(match_id):
         hero_info[f"deaths"] = player["deaths"]
         hero_info[f"assists"] = player["assists"]
         hero_info[f"damage"] = player["hero_damage"]
-        hero_info[f"items"] = []
+        # hero_info[f"items"] = []
         for i in range(6):
-            hero_info[f"items"].append(item_ids[str(player[f"item_{i}"])])
+            hero_info[f"item{i}"] = item_ids[str(player[f"item_{i}"])]
         match_dict.append(hero_info)
 
     return jsonify(match_dict)
